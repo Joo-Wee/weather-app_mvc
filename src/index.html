@@ -4,21 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMPLE WEATHER APP</title>
-    <!--<link rel="stylesheet" href="output.css">-->
     <!--<link rel="shortcut icon" type="image/png" href="media/froska.png">-->
 	<link rel="stylesheet" href="output.css">
 </head>
 
-<body class="bg-neutral-500">
-	<header>
-		<div>
-			<h1 class = "text-7xl decoration-blue-500">Simple Weather App</h1>
-		</div>
+<body class="bg-neutral-100 px-[4vw]">
+	<header class = "my-[3vh]">
+		<div class="w-full relative">
+            <div class="relative flex-initial w-full">
+                <p class="text-4xl font-bold text-teal-600">Simple Weather App</p>
+            </div>
+        </div>
 	</header>
 	<main>
-	
+		<section>
+			<div class="max-[540px]:flex-col flex gap-10 w-full">
+                <input type="text" class="max-[540px]:w-full w-2/3 h-[55px] bg-transparent border-b-[2px] border-solid border-[#AAA] rounded-lg ps-5 pe-5 outline-none" placeholder="Search for a city">
+				<button type ="submit" class="flex items-center justify-center bg-[#6e57e0] text-white font-normal px-5 border-none rounded-lg cursor-pointer duration-400 hover:bg-[#00B5E7]"><a href = "#/cities">Submit</a></button>
+			</div>
+			<span class= "msg text-center text-[15px] text-[#777]"></span>
+		</section>
+		
+		<section id = "app">
+			
+		</section>
 	</main>
-	<footer>
-	
-	</footer>
+	<footer class="mt-[20vh] flex justify-center items-center flex-col gap-y-[30px] py-10 px-[60px]">
+            <div>
+                <p class="text-[25px] font-normal">Joo Manasseh .</p>
+            </div>
+            <div class="flex">
+                <ul class="flex">
+                    <li class="list-none">
+                        <a href="#home" class="no-underline text-feat-text-col font-semibold ms-5 me-5">Home</a>
+                    </li>
+                    <li class="list-none">
+                        <a href="#about" class="no-underline text-feat-text-col font-semibold ms-5 me-5">About</a>
+                    </li>
+                    <li class="list-none">
+                        <a href="#projects" class="no-underline text-feat-text-col font-semibold ms-5 me-5">Project</a>
+                    </li>
+                    <li class="list-none">
+                        <a href="#contact" class="no-underline text-feat-text-col font-semibold ms-5 me-5">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-sm mt-2.5">
+                <p>Copyright © <a href="#home" class="no-underline">Joo Manasseh</a> - All rights reserved
+                </p>
+            </div>
+    </footer>
+	<script src="app/lib/app.js"></script>
+	<script src="app/lib/router.js"></script>
+	<script src="app/main.js"></script>
 </body>

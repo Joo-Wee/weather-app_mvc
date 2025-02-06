@@ -5,14 +5,17 @@
   "description": "A simple weather app with Vanilla Javascript in MVC architecture",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./style.css -o ./src/output.css --minify --watch"
+    "build": "npx tailwindcss -i ./style.css -o ./src/output.css --minify --watch",
+    "serve": "wait-on src/output.css && live-server --no-browser",
+    "dev": "concurrently \"npm run build\" \"npm run serve\""
   },
   "devDependencies": {
-    "tailwindcss": "^4.0.3"
+    "concurrently": "^9.1.2",
+    "live-server": "^1.2.0",
+    "tailwindcss": "^4.0.3",
+    "wait-on": "^8.0.2"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.3"
   }
-  
-  
 }
