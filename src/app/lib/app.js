@@ -17,7 +17,8 @@ class App {
 			this.updateView();
 		}
 		else{
-			this.appElement.innerHTML = `<div class="error">Component "${name}" not found</div>`;
+			const msg = document.querySelector('.msg');
+			msg.innerHTML = `<div class="error">Please a enter a valid city</div>`;
 		}
 	}
 	

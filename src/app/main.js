@@ -1,16 +1,18 @@
 const app = new App('#app');
 const api = new API();
 
-// document.querySelector('#home').addEventListener('click', () => {
-//     // Clear the URL hash
-//     window.location.hash = '';
-//     // Clear the input field
-//     api.input.value = '';
-//     // Clear the cities array
-//     app.componentsByName['cities'].model.cities = [];
-//     // Show the initial state
-//     app.showComponent('cities');
-// });
+const msg = document.querySelector('.msg');
+
+document.querySelector('#home').addEventListener('click', () => {
+    // Clear the URL hash
+    window.location.hash = '';
+    // Clear the input field
+    api.input.value = '';
+    // Clear the cities array
+    app.componentsByName['cities'].model.cities = [];
+    // Show the initial state
+    app.showComponent('cities');
+});
 
 const weatherTemplate = (city) => `
 	<h2 class="city-name" data-name="${city.name}, ${city.sys.country}">
@@ -59,9 +61,11 @@ app.addComponent({
 			};
 			
 			model.cities = [...model.cities, city];
+			msg.innerHTML = '';
 		})
 		.catch(error => {
 			console.error('Error fetching city data:', error);
+			msg.innerHTML = `<div class="error">Abeg, your city no dey map top😆</div>`;
 		});
 	}
 });
