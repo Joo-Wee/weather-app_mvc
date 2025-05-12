@@ -17,9 +17,12 @@ class API {
 						city: this.inputVal
 					}
 				});
+				
 				document.dispatchEvent(cityAddedEvent);
 			}
+			
 			window.location.hash = `#/cities?city=${encodeURIComponent(this.inputVal)}`;
+			this.input.value = '';
 		});
 	}
 	

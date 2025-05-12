@@ -65,7 +65,7 @@ app.addComponent({
 		})
 		.catch(error => {
 			console.error('Error fetching city data:', error);
-			msg.innerHTML = `<div class="error">Abeg, your city no dey map top😆</div>`;
+			msg.innerHTML = `<div class="error">Abeg, this your city, <span class="font-bold">${api.inputVal}</span>, no dey map top😆</div>`;
 		});
 	}
 });
