@@ -12,15 +12,17 @@
 	<header class = "my-[3vh]">
 		<div class="w-full relative">
             <div class="relative flex-initial w-full">
-                <p class="text-4xl font-bold text-teal-600">Simple Weather App</p>
+                <p id ="#home" class="text-4xl font-bold text-teal-600">Simple Weather App</p>
             </div>
         </div>
 	</header>
 	<main>
 		<section class ="top-banner">
 			<div class="max-[540px]:flex-col flex gap-10 w-full">
-                <input type="text" class="max-[540px]:w-full w-2/3 h-[55px] bg-transparent border-b-[2px] border-solid border-[#AAA] rounded-lg ps-5 pe-5 outline-none" placeholder="Search for a city">
-				<button type ="submit" class="flex items-center justify-center bg-[#6e57e0] text-white font-normal px-5 border-none rounded-lg cursor-pointer duration-400 hover:bg-[#00B5E7]"><a href = "#/cities">Submit</a></button>
+                <form class="max-w-2/3 flex align-center justify-center gap-5">
+                    <input type="text" name="city" class="max-[540px]:w-full w-[70vw] h-[55px] bg-transparent border-b-[2px] border-solid border-[#AAA] rounded-lg ps-5 pe-5 text-md outline-none" placeholder="Search for a city">
+                    <button type="submit" class="flex items-center justify-center bg-[#6e57e0] text-white font-normal px-5 border-none rounded-lg cursor-pointer duration-400 hover:bg-[#00B7E7]">Submit</button>
+                </form>
 			</div>
 			<span class= "msg text-center text-[15px] text-[#777]"></span>
 		</section>
@@ -59,3 +61,4 @@
 	<script src="app/lib/router.js"></script>
 	<script src="app/main.js"></script>
 </body>
+</html>

@@ -1,19 +1,30 @@
 const app = new App('#app');
 const api = new API();
 
+// document.querySelector('#home').addEventListener('click', () => {
+//     // Clear the URL hash
+//     window.location.hash = '';
+//     // Clear the input field
+//     api.input.value = '';
+//     // Clear the cities array
+//     app.componentsByName['cities'].model.cities = [];
+//     // Show the initial state
+//     app.showComponent('cities');
+// });
+
 const weatherTemplate = (city) => `
-	<h2 class ="city-name" data-name="${name}, ${sys.country}">
-		<span>${name}</span>
-		<sup>${sys.country}</sup>
+	<h2 class="city-name" data-name="${city.name}, ${city.sys.country}">
+		<span>${city.name}</span>
+		<sup>${city.sys.country}</sup>
 	</h2>
 	
-	<div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
+	<div class="city-temp">${Math.round(city.main.temp)}<sup>°C</sup></div>
 	
 	<figure>
-		<img class="city-icon" src=${icon} alt=${weather[0]["main"]}
-		<figcaption>${weather[0]["description"]}</figcaption>
+		<img class="city-icon" src="${city.icon}" alt="${city.weather[0].main}">
+		<figcaption>${city.weather[0].description}</figcaption>
 	</figure>
-	`
+`;
 
 app.addComponent({
 	name: 'cities',
@@ -21,25 +32,39 @@ app.addComponent({
 		cities: []
 	},
 	
-	view(model){
-		const weatherHTML = model.cities.reduce((html, city) => html + `<li>${weatherTemplate(city)}</li>`, '')
+	view(model) {
+		const weatherHTML = model.cities.reduce((html, city) => html + `<li>${weatherTemplate(city)}</li>`, '');
 		return `
 			<ul class="cities">
 				${weatherHTML}
 			</ul>
-			`
+		`;
 	},
 	
 	controller(model) {
 		api
 		.getCities()
 		.then(result => {
-			console.log(result);
-			        const {main, name, sys, weather} = result;
-			const icon = `https://openweather.org/img/wn/${weather[0]["icon"]}@2x.png`;
-			});
+			//console.log(result);
+			const {main, name, sys, weather} = result;
+			const icon = `https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+			//console.log(icon);
+			
+			const city = {
+				name,
+				main,
+				sys,
+				weather,
+				icon
+			};
+			
+			model.cities = [...model.cities, city];
+		})
+		.catch(error => {
+			console.error('Error fetching city data:', error);
+		});
 	}
 });
 
 const router = new Router(app);
-router.addRoute('cities', '^#/cities$');
+router.addRoute('cities', '^#/cities(\\?.*)?$');

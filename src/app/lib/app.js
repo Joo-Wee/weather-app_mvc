@@ -14,12 +14,17 @@ class App {
 		
 		if(this.currentComponent){
 			this.currentComponent.controller(this.currentComponent.model);
+			this.updateView();
 		}
-		this.updateView();
+		else{
+			this.appElement.innerHTML = `<div class="error">Component "${name}" not found</div>`;
+		}
 	}
 	
 	updateView(){
+		console.log('Updating view with model:', JSON.stringify(this.currentComponent.model));
 		this.appElement.innerHTML = this.currentComponent.view(this.currentComponent.model);
+		console.log('View updated');
 	}
 	
 	proxify(model) {

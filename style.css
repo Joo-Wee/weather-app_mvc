@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+.top-banner form input::placeholder{
+    @apply text-stone-600;
+}
+
+#app{
+    @apply flex py-10 px-[60px];
+}
+
+.cities {
+    @apply flex flex-row gap-15 mx-auto flex-wrap text-lg text-zinc-700 font-medium;
+}
+
+.cities li {
+    @apply max-[540px]:w-full max-[900px]:w-4/5 relative flex justify-center items-center flex-col w-[15vw] h-[250px] bg-white rounded-3xl shadow-lg overflow-hidden after:content-[''] after:absolute hover:bottom-0 after:-bottom-full hover:bg-[#6e57e0] after:w-full after:h-full after:duration-400 after:z-[1] hover:text-white hover:z-[2];
+}
+
+

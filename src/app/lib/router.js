@@ -16,11 +16,23 @@ class Router {
 	
 	hashChange() {
 		const hash = window.location.hash;
+		const [path, queryString] = hash.split('?');
 		
-		const route = this.routes.filter(route => hash.match(new RegExp(route.url)))[0];
+		const route = this.routes.find(route => path.match(new RegExp(route.url)));
 		
 		if(route){
+			const params = new URLSearchParams(queryString);
+			const city = params.get('city');
 			this.app.showComponent(route.name);
+
+			if(city){
+				const cityUpdateEvent = new CustomEvent('cityUpdate', {
+					detail: {
+						city: decodeURIComponent(city)
+					}
+				});
+				document.dispatchEvent(cityUpdateEvent);
+			}
 		}
 		
 		else {
